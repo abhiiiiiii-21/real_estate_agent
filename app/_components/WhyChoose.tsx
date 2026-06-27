@@ -1,32 +1,91 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import data from '../../data/WhyChooseUS.json';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export default function WhyChoose() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
+    let ctx = gsap.context(() => {
+      // Header text word stagger reveal
+      gsap.fromTo(
+        ".why-choose-word",
+        { y: "100%", opacity: 0 },
+        {
+          y: "0%",
+          opacity: 1,
+          duration: 1.2,
+          ease: "power3.out",
+          stagger: 0.08,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 75%",
+            once: true,
+          }
+        }
+      );
+
+      // Accordion rows stagger fade-up
+      const accordionItems = gsap.utils.toArray(".accordion-row");
+      if (accordionItems.length > 0) {
+        gsap.fromTo(
+          accordionItems,
+          { y: 60, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out",
+            stagger: 0.15,
+            scrollTrigger: {
+              trigger: ".accordion-container",
+              start: "top 80%",
+              once: true,
+            },
+            clearProps: "transform,opacity"
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section className="bg-[#050505] text-white py-24 px-4 md:px-12 lg:px-24 overflow-visible font-instrument-sans">
-      <div className="max-w-7xl mx-auto">
+    <section ref={sectionRef} className="bg-[#050505] text-white py-24 px-4 md:px-12 lg:px-24 overflow-visible font-instrument-sans">
+      <div className="max-w-7xl mx-auto mt-10">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] max-w-2xl">
-            Why Clients Choose Christopher Brent
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] max-w-2xl flex flex-wrap gap-x-3 gap-y-1">
+            {"Why Clients Choose Christopher Brent".split(" ").map((word, i) => (
+              <span key={i} className="overflow-hidden inline-block pb-1">
+                <span className="why-choose-word inline-block">{word}</span>
+              </span>
+            ))}
           </h2>
-          <button className="group relative flex items-center justify-between pl-5 pr-11 py-2 rounded-full border border-gray-200 bg-white text-sm font-medium text-black transition-all duration-500 ease-in-out hover:bg-gray-950 hover:text-white hover:border-gray-950 hover:pl-11 hover:pr-5 min-h-[38px] cursor-pointer">
-            <span className="transition-all duration-500 ease-in-out">Book a Free Consultation</span>
-            <div className="absolute left-[calc(100%-34px)] top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black text-white flex items-center justify-center transition-all duration-500 ease-in-out group-hover:left-2 group-hover:bg-white group-hover:text-black">
-              <ArrowRight className="w-4 h-4" />
+          <button className="group inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white text-black text-sm font-semibold transition-transform hover:scale-[1.02] cursor-pointer shrink-0">
+            <div className="relative overflow-hidden leading-tight">
+              <span 
+                className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full after:content-[attr(data-text)] after:absolute after:left-0 after:top-full" 
+                data-text="Book a Free Consultation"
+              >
+                Book a Free Consultation
+              </span>
             </div>
           </button>
         </div>
 
         {/* Accordion List */}
-        <div className="flex flex-col">
+        <div className="flex flex-col accordion-container">
           {/* Top border for the first item */}
           <div className="w-full h-[1px] bg-white/10" />
 
@@ -35,7 +94,7 @@ export default function WhyChoose() {
             const number = `/00${index + 1}`;
 
             return (
-              <div key={index} className="flex flex-col w-full">
+              <div key={index} className="accordion-row flex flex-col w-full">
                 <motion.div
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   initial={false}
@@ -128,6 +187,13 @@ export default function WhyChoose() {
               </div>
             );
           })}
+        </div>
+
+        {/* Closing text */}
+        <div className="mt-24 md:mt-42 pb-§5 text-center flex justify-center">
+          <h3 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] text-white">
+            ...and every sale tells a story.
+          </h3>
         </div>
       </div>
     </section>

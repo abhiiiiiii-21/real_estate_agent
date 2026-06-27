@@ -14,11 +14,26 @@ export default function Nabvar() {
     { name: "Testimonials", href: "#testimonials-section" }
   ];
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const id = href.replace("#", "");
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      setIsOpen(false);
+    }
+  };
+
   return (
-    <nav className="w-full bg-[#FAF9F7] py-6 px-6 md:px-12 lg:px-16 flex justify-between items-center font-instrument-sans relative z-50 select-none">
+    <motion.nav 
+      initial={{ y: "-100%", opacity: 0 }}
+      animate={{ y: "0%", opacity: 1 }}
+      transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+      className="w-full bg-[#FAF9F7] py-6 px-6 md:px-12 lg:px-16 flex justify-between items-center font-instrument-sans relative z-50 select-none"
+    >
       {/* Left side Logo */}
       <a href="/" className="text-xl md:text-2xl font-semibold tracking-wide text-gray-900">
-        CBS
+        CHRISTOPHER
       </a>
 
       {/* Middle Links (Desktop) */}
@@ -27,9 +42,17 @@ export default function Nabvar() {
           <a
             key={link.name}
             href={link.href}
-            className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+            onClick={(e) => handleScroll(e, link.href)}
+            className="group inline-flex items-center gap-1 text-sm font-medium text-gray-600 no-underline transition-colors duration-200 hover:text-gray-900"
           >
-            {link.name}
+            <div className="relative overflow-hidden leading-tight">
+              <span
+                className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full after:content-[attr(data-text)] after:absolute after:left-0 after:top-full"
+                data-text={link.name}
+              >
+                {link.name}
+              </span>
+            </div>
           </a>
         ))}
       </div>
@@ -38,11 +61,15 @@ export default function Nabvar() {
       <div className="hidden md:flex">
         <a
           href="#contact"
-          className="group relative flex items-center justify-between pl-5 pr-11 py-2 rounded-full border border-gray-200 bg-white text-sm font-semibold text-gray-900 transition-all duration-500 ease-in-out hover:bg-gray-900 hover:text-white hover:border-gray-900 hover:pl-11 hover:pr-5 min-h-[38px]"
+          className="group inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-gray-900 text-white text-sm font-semibold transition-transform hover:scale-[1.02]"
         >
-          <span className="transition-all duration-500 ease-in-out">Get In Touch</span>
-          <div className="absolute left-[calc(100%-34px)] top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-gray-900 text-white flex items-center justify-center transition-all duration-500 ease-in-out group-hover:left-2 group-hover:bg-white group-hover:text-gray-900">
-            <ArrowRight className="w-4 h-4" />
+          <div className="relative overflow-hidden leading-tight">
+            <span 
+              className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full after:content-[attr(data-text)] after:absolute after:left-0 after:top-full" 
+              data-text="Get In Touch"
+            >
+              Get In Touch
+            </span>
           </div>
         </a>
       </div>
@@ -70,26 +97,37 @@ export default function Nabvar() {
               <a
                 key={link.name}
                 href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-base font-medium text-gray-700 hover:text-gray-900 transition-colors"
+                onClick={(e) => handleScroll(e, link.href)}
+                className="group flex items-center justify-between w-full text-base font-medium text-gray-700 hover:text-gray-900 transition-colors"
               >
-                {link.name}
+                <div className="relative overflow-hidden leading-tight">
+                  <span
+                    className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full after:content-[attr(data-text)] after:absolute after:left-0 after:top-full"
+                    data-text={link.name}
+                  >
+                    {link.name}
+                  </span>
+                </div>
               </a>
             ))}
             <div className="h-[1px] bg-gray-100 my-1" />
             <a
               href="#contact"
               onClick={() => setIsOpen(false)}
-              className="group relative flex items-center justify-between pl-5 pr-11 py-2 rounded-full border border-gray-200 bg-white text-base font-semibold text-gray-900 transition-all duration-500 ease-in-out hover:bg-gray-900 hover:text-white hover:border-gray-900 hover:pl-11 hover:pr-5 min-h-[42px] w-full"
+              className="group inline-flex items-center justify-center w-full py-4 rounded-full bg-gray-900 text-white text-base font-semibold transition-transform hover:scale-[1.02] no-underline"
             >
-              <span className="transition-all duration-500 ease-in-out">Get In Touch</span>
-              <div className="absolute left-[calc(100%-36px)] top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center transition-all duration-500 ease-in-out group-hover:left-2 group-hover:bg-white group-hover:text-gray-900">
-                <ArrowRight className="w-4 h-4" />
+              <div className="relative overflow-hidden leading-tight">
+                <span 
+                  className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full after:content-[attr(data-text)] after:absolute after:left-0 after:top-full" 
+                  data-text="Get In Touch"
+                >
+                  Get In Touch
+                </span>
               </div>
             </a>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 }

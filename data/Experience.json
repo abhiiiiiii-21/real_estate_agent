@@ -1,0 +1,98 @@
+{
+  "content": {
+    "heading": [
+      "Signature",
+      "Properties",
+      "Sold"
+    ],
+    "badge": "SELECTED TRANSACTIONS",
+    "description": "A curated selection of waterfront estates, luxury residences, and investment properties represented across Florida's Gulf Coast. Every transaction reflects strategic marketing, skilled negotiation, and a commitment to delivering exceptional results.",
+    "button": "Get in Touch"
+  },
+  "projects": [
+    {
+      "id": 1,
+      "propertyName": "Belleair Waterfront Estate",
+      "location": "Belleair, Florida",
+      "shortLocation": "Belleair",
+      "propertyType": "Waterfront Estate",
+      "status": "Sold",
+      "yearSold": "2025",
+      "price": "$2.49M",
+      "beds": "5",
+      "baths": "6",
+      "sqft": "5,420 Sqft",
+      "image": "/Experience/1.jpg"
+    },
+    {
+      "id": 2,
+      "propertyName": "Harbor View Residence",
+      "location": "Clearwater Beach, Florida",
+      "shortLocation": "Clearwater",
+      "propertyType": "Luxury Condo",
+      "status": "Sold",
+      "yearSold": "2024",
+      "price": "$1.68M",
+      "beds": "4",
+      "baths": "4",
+      "sqft": "3,180 Sqft",
+      "image": "/Experience/2.jpg"
+    },
+    {
+      "id": 3,
+      "propertyName": "Bayfront Modern Estate",
+      "location": "St. Petersburg, Florida",
+      "shortLocation": "St. Pete",
+      "propertyType": "Modern Estate",
+      "status": "Sold",
+      "yearSold": "2024",
+      "price": "$3.25M",
+      "beds": "6",
+      "baths": "7",
+      "sqft": "6,940 Sqft",
+      "image": "/Experience/3.jpg"
+    },
+    {
+      "id": 4,
+      "propertyName": "Coastal Luxury Residence",
+      "location": "Palm Harbor, Florida",
+      "shortLocation": "Palm Harbor",
+      "propertyType": "Luxury Home",
+      "status": "Sold",
+      "yearSold": "2023",
+      "price": "$2.15M",
+      "beds": "5",
+      "baths": "5",
+      "sqft": "4,860 Sqft",
+      "image": "/Experience/4.jpg"
+    },
+    {
+      "id": 5,
+      "propertyName": "Sunset Bay Retreat",
+      "location": "Tampa, Florida",
+      "shortLocation": "Tampa",
+      "propertyType": "Luxury Residence",
+      "status": "Sold",
+      "yearSold": "2023",
+      "price": "$1.95M",
+      "beds": "4",
+      "baths": "5",
+      "sqft": "4,250 Sqft",
+      "image": "/Experience/5.jpg"
+    },
+    {
+      "id": 6,
+      "propertyName": "Gulf Coast Estate",
+      "location": "Sarasota, Florida",
+      "shortLocation": "Sarasota",
+      "propertyType": "Waterfront Villa",
+      "status": "Sold",
+      "yearSold": "2022",
+      "price": "$3.85M",
+      "beds": "6",
+      "baths": "7",
+      "sqft": "7,120 Sqft",
+      "image": "/Experience/6.jpg"
+    }
+  ]
+}

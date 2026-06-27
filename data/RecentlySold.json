@@ -6,8 +6,8 @@
     "status": "Sold",
     "price": "$1.28M",
     "propertyType": "Luxury Home",
-    "BigImage": "/RecentlySold/1.png",
-    "SmallImage": "/RecentlySold/2.png",
+    "BigImage": "/RecentlySold/1.jpg",
+    "SmallImage": "/RecentlySold/2.jpg",
     "features": [
       "5 Beds",
       "4 Baths",
@@ -23,7 +23,7 @@
     "status": "Sold",
     "price": "$945K",
     "propertyType": "Single Family",
-    "BigImage": "/RecentlySold/1.png",
+    "BigImage": "/RecentlySold/4.jpg",
     "SmallImage": "/RecentlySold/3.jpg",
     "features": [
       "4 Beds",
@@ -40,8 +40,8 @@
     "status": "Sold",
     "price": "$2.15M",
     "propertyType": "Luxury Villa",
-    "BigImage": "/RecentlySold/1.png",
-    "SmallImage": "/RecentlySold/4.jpg",
+    "BigImage": "/RecentlySold/6.jpg",
+    "SmallImage": "/RecentlySold/5.jpg",
     "features": [
       "6 Beds",
       "5 Baths",
@@ -57,8 +57,8 @@
     "status": "Sold",
     "price": "$875K",
     "propertyType": "Family Home",
-    "BigImage": "/RecentlySold/1.png",
-    "SmallImage": "/RecentlySold/2.png",
+    "BigImage": "/RecentlySold/8.jpg",
+    "SmallImage": "/RecentlySold/7.jpg",
     "features": [
       "4 Beds",
       "3 Baths",

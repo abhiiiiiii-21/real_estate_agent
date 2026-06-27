@@ -3,12 +3,13 @@
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  MapPin, Download, X, Play, Check,
+  MapPin, Download, X, Play, Check, ChevronLeft, ChevronRight,
   Waves, Dumbbell, Store, Tent, ShieldCheck, Wind, TreePine, Flame, 
   Coffee, Film, Car, Sparkles, Smartphone, Utensils, Shirt, Tv, Wine, Box,
   Anchor, Armchair, AppWindow, Sun, Eye, Lock, Lightbulb, PawPrint, Wifi, Speaker, Gamepad2, Thermometer, Gem, Archive
 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
+import { useLenis } from 'lenis/react';
 
 const getFeatureIcon = (feature: string) => {
   const f = feature.toLowerCase();
@@ -83,6 +84,7 @@ export function PropertyModal({ property, onClose }: PropertyModalProps) {
   const activeCardIdRef = useRef("card-1");
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const lastWheelTime = useRef(0);
+  const lenis = useLenis();
 
   const navItems = [
     { id: "card-1", num: "01.", label: "General info" },
@@ -96,8 +98,9 @@ export function PropertyModal({ property, onClose }: PropertyModalProps) {
   useEffect(() => {
     if (!property) return;
 
-    // Lock body scroll when modal is open
+    // Lock body scroll and pause lenis when modal is open
     document.body.style.overflow = 'hidden';
+    if (lenis) lenis.stop();
 
     const container = scrollContainerRef.current;
     let observer: IntersectionObserver | null = null;
@@ -177,6 +180,7 @@ export function PropertyModal({ property, onClose }: PropertyModalProps) {
 
     return () => {
       document.body.style.overflow = '';
+      if (lenis) lenis.start();
       if (container) {
         container.removeEventListener('wheel', handleWheel);
       }
@@ -184,9 +188,7 @@ export function PropertyModal({ property, onClose }: PropertyModalProps) {
         observer.disconnect();
       }
     };
-  }, [property]); // Re-run when property changes so refs are ready
-
-  if (!property) return null;
+  }, [property, lenis]); // Re-run when property changes so refs are ready
 
   const scrollToCard = (id: string) => {
     setActiveCardId(id);
@@ -194,21 +196,57 @@ export function PropertyModal({ property, onClose }: PropertyModalProps) {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', inline: 'center' });
   };
 
+  const handlePrev = () => {
+    const currentIndex = navItems.findIndex(item => item.id === activeCardIdRef.current);
+    const prevIndex = Math.max(currentIndex - 1, 0);
+    scrollToCard(navItems[prevIndex].id);
+  };
+
+  const handleNext = () => {
+    const currentIndex = navItems.findIndex(item => item.id === activeCardIdRef.current);
+    const nextIndex = Math.min(currentIndex + 1, navItems.length - 1);
+    scrollToCard(navItems[nextIndex].id);
+  };
+
   return (
     <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        className="fixed inset-0 z-50 flex items-center justify-center bg-[#1A1A1A]/95 backdrop-blur-sm"
-      >
+      {property && (
+        <motion.div
+          key="property-modal"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#1A1A1A]/95 backdrop-blur-sm"
+        >
         {/* Close Button */}
         <button
           onClick={onClose}
           className="absolute top-4 right-6 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors z-50 cursor-pointer"
         >
           <X className="w-5 h-5" />
+        </button>
+
+        {/* Previous Card Button */}
+        <button
+          onClick={handlePrev}
+          disabled={activeCardId === navItems[0].id}
+          className={`absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-black hover:bg-black/80 text-white transition-colors z-50 cursor-pointer ${
+            activeCardId === navItems[0].id ? 'opacity-30 cursor-not-allowed' : 'shadow-lg'
+          }`}
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+
+        {/* Next Card Button */}
+        <button
+          onClick={handleNext}
+          disabled={activeCardId === navItems[navItems.length - 1].id}
+          className={`absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-black hover:bg-black/80 text-white transition-colors z-50 cursor-pointer ${
+            activeCardId === navItems[navItems.length - 1].id ? 'opacity-30 cursor-not-allowed' : 'shadow-lg'
+          }`}
+        >
+          <ChevronRight className="w-6 h-6" />
         </button>
 
         {/* Main Content Container (Hidden native scroll, controlled via wheel event) */}
@@ -468,7 +506,8 @@ export function PropertyModal({ property, onClose }: PropertyModalProps) {
             })}
           </div>
         </div>
-      </motion.div>
+        </motion.div>
+      )}
     </AnimatePresence>
   );
 }

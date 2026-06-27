@@ -12,13 +12,16 @@ export default function Hero() {
     "10+ Years Experience"
   ];
 
+  // Easing for premium feel
+  const customEase: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
   return (
     <section className="bg-[#FAF9F7] pb-12 px-1.5 sm:px-3 md:px-4 lg:px-6 font-instrument-sans select-none overflow-hidden">
       <div className="max-w-[1550px] mx-auto w-full">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0, y: 40, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.2, ease: customEase }}
           className="bg-[#D2DFE5] rounded-[32px] md:rounded-[40px] p-6 sm:p-10 md:p-12 lg:p-16 relative overflow-hidden min-h-[600px] md:min-h-[700px] lg:min-h-[830px] flex flex-col justify-between"
         >
           {/* Full Background Image */}
@@ -32,7 +35,7 @@ export default function Hero() {
               className="absolute inset-0 w-full h-full object-cover object-center"
             />
             {/* Subtle overlay to soften contrast */}
-            <div className="absolute inset-0 bg-black/10" />
+            <div className="absolute inset-0 bg-black/5" />
           </div>
 
           {/* Centered Left Title */}
@@ -47,24 +50,23 @@ export default function Hero() {
             with confidence.
           </motion.h1>
 
-          {/* Top Section: Badges (aligned right) */}
+          {/* Top Section: Badges (aligned right) - Staggered Mask Reveal */}
           <div className="flex justify-end w-full z-10">
             {/* Badges Stack */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="flex flex-col gap-3 items-start lg:items-end w-full lg:w-auto"
-            >
+            <div className="flex flex-col gap-3 items-start lg:items-end w-full lg:w-auto">
               {badges.map((badge, idx) => (
-                <div
-                  key={idx}
-                  className="border border-white/20 bg-white/25 backdrop-blur-md rounded-full px-5 py-2 text-xs md:text-sm font-medium text-gray-800 shadow-sm"
-                >
-                  {badge}
+                <div key={idx} className="overflow-hidden rounded-full">
+                  <motion.div
+                    initial={{ y: "120%" }}
+                    animate={{ y: "0%" }}
+                    transition={{ delay: 0.6 + idx * 0.1, duration: 1, ease: customEase }}
+                    className="border border-white/20 bg-white/25 backdrop-blur-md rounded-full px-5 py-2 text-xs md:text-sm font-medium text-gray-800 shadow-sm"
+                  >
+                    {badge}
+                  </motion.div>
                 </div>
               ))}
-            </motion.div>
+            </div>
           </div>
 
           {/* Floating Realtor Portrait Overlay (Bottom Right) */}
@@ -85,33 +87,52 @@ export default function Hero() {
 
           {/* Bottom Section: Actions & Description */}
           <div className="flex flex-col sm:flex-row justify-between items-end gap-6 z-10 mt-auto">
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className="flex flex-col gap-3 w-fit"
-            >
-              <a
-                href="#consultation"
-                className="group relative flex items-center justify-between pl-5 pr-11 py-2 rounded-full border border-gray-200 bg-white text-xs md:text-sm font-semibold text-gray-900 transition-all duration-500 ease-in-out hover:bg-gray-900 hover:text-white hover:border-gray-900 hover:pl-11 hover:pr-5 min-h-[38px] w-fit shadow-sm"
-              >
-                <span className="transition-all duration-500 ease-in-out">Book a Free Consultation</span>
-                <div className="absolute left-[calc(100%-34px)] top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-gray-900 text-white flex items-center justify-center transition-all duration-500 ease-in-out group-hover:left-2 group-hover:bg-white group-hover:text-gray-900">
-                  <ArrowRight className="w-4 h-4" />
-                </div>
-              </a>
+            {/* CTA Buttons - Staggered Mask Reveal */}
+            <div className="flex flex-col gap-3 w-fit">
+              <div className="overflow-hidden rounded-full p-[2px] -m-[2px]">
+                <motion.div
+                  initial={{ y: "120%" }}
+                  animate={{ y: "0%" }}
+                  transition={{ delay: 0.9, duration: 1, ease: customEase }}
+                >
+                  <a
+                    href="#consultation"
+                    className="group inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white text-gray-900 text-xs md:text-sm font-semibold transition-transform hover:scale-[1.02] shadow-sm w-fit no-underline"
+                  >
+                    <div className="relative overflow-hidden leading-tight">
+                      <span 
+                        className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full after:content-[attr(data-text)] after:absolute after:left-0 after:top-full" 
+                        data-text="Book a Free Consultation"
+                      >
+                        Book a Free Consultation
+                      </span>
+                    </div>
+                  </a>
+                </motion.div>
+              </div>
 
-              <a
-                href="#listings"
-                className="group relative flex items-center justify-between pl-5 pr-11 py-2 rounded-full border border-gray-200 bg-white text-xs md:text-sm font-semibold text-gray-900 transition-all duration-500 ease-in-out hover:bg-gray-900 hover:text-white hover:border-gray-900 hover:pl-11 hover:pr-5 min-h-[38px] w-fit shadow-sm"
-              >
-                <span className="transition-all duration-500 ease-in-out">View Listings</span>
-                <div className="absolute left-[calc(100%-34px)] top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-gray-900 text-white flex items-center justify-center transition-all duration-500 ease-in-out group-hover:left-2 group-hover:bg-white group-hover:text-gray-900">
-                  <ArrowRight className="w-4 h-4" />
-                </div>
-              </a>
-            </motion.div>
+              <div className="overflow-hidden rounded-full p-[2px] -m-[2px]">
+                <motion.div
+                  initial={{ y: "120%" }}
+                  animate={{ y: "0%" }}
+                  transition={{ delay: 1.0, duration: 1, ease: customEase }}
+                >
+                  <a
+                    href="#listings"
+                    className="group inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white text-gray-900 text-xs md:text-sm font-semibold transition-transform hover:scale-[1.02] shadow-sm w-fit no-underline"
+                  >
+                    <div className="relative overflow-hidden leading-tight">
+                      <span 
+                        className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full after:content-[attr(data-text)] after:absolute after:left-0 after:top-full" 
+                        data-text="View Listings"
+                      >
+                        View Listings
+                      </span>
+                    </div>
+                  </a>
+                </motion.div>
+              </div>
+            </div>
 
             {/* Realtor Subtitle Details (Hidden on tiny mobile) */}
             <motion.div

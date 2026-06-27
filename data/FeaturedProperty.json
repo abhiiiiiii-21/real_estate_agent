@@ -19,7 +19,7 @@
       "Positioned along Belleair's exclusive waterfront, this contemporary residence blends timeless architecture with panoramic bay views.",
       "Designed for modern luxury living, the home features expansive entertaining spaces, floor-to-ceiling glass, designer finishes, and seamless indoor-outdoor living."
     ],
-    "heroImage": "/Featured/1/hero.png",
+    "heroImage": "/Featured/1/hero.jpg",
     "gallery": {
       "exterior": [
         "/Featured/1/exterior/1.jpg",
@@ -87,18 +87,21 @@
       "An elegant beachfront residence offering uninterrupted Gulf views, refined interiors, and resort-inspired amenities.",
       "Every room is designed to maximize natural light while creating an effortless connection to the waterfront."
     ],
-    "heroImage": "/Featured/2/hero.png",
+    "heroImage": "/Featured/2/hero.jpg",
     "gallery": {
       "exterior": [
         "/Featured/2/exterior/1.jpg",
         "/Featured/2/exterior/2.jpg",
-        "/Featured/2/exterior/3.jpg"
+        "/Featured/2/exterior/3.jpg",
+        "/Featured/2/exterior/4.jpg",
+        "/Featured/2/exterior/5.jpg"
       ],
       "interior": [
         "/Featured/2/interior/1.jpg",
         "/Featured/2/interior/2.jpg",
         "/Featured/2/interior/3.jpg",
-        "/Featured/2/interior/4.jpg"
+        "/Featured/2/interior/4.jpg",
+        "/Featured/2/interior/5.jpg"
       ]
     },
     "features": [
@@ -152,13 +155,14 @@
       "A striking architectural masterpiece designed for those seeking exceptional waterfront living.",
       "Featuring expansive entertainment spaces, private terraces, luxury amenities, and breathtaking sunset views."
     ],
-    "heroImage": "/Featured/3/hero.png",
+    "heroImage": "/Featured/3/hero.jpg",
     "gallery": {
       "exterior": [
         "/Featured/3/exterior/1.jpg",
         "/Featured/3/exterior/2.jpg",
         "/Featured/3/exterior/3.jpg",
-        "/Featured/3/exterior/4.jpg"
+        "/Featured/3/exterior/4.jpg",
+        "/Featured/3/exterior/5.jpg"
       ],
       "interior": [
         "/Featured/3/interior/1.jpg",
@@ -219,19 +223,21 @@
       "Blending elegant coastal architecture with sophisticated interiors, this residence offers luxurious living just moments from the Gulf Coast.",
       "Thoughtfully designed for entertaining and everyday comfort, every detail reflects timeless craftsmanship."
     ],
-    "heroImage": "/Featured/4/hero.png",
+    "heroImage": "/Featured/4/hero.jpg",
     "gallery": {
       "exterior": [
         "/Featured/4/exterior/1.jpg",
         "/Featured/4/exterior/2.jpg",
         "/Featured/4/exterior/3.jpg",
-        "/Featured/4/exterior/4.jpg"
+        "/Featured/4/exterior/4.jpg",
+        "/Featured/4/exterior/5.jpg"
       ],
       "interior": [
         "/Featured/4/interior/1.jpg",
         "/Featured/4/interior/2.jpg",
         "/Featured/4/interior/3.jpg",
-        "/Featured/4/interior/4.jpg"
+        "/Featured/4/interior/4.jpg",
+        "/Featured/4/interior/5.jpg"
       ]
     },
     "features": [

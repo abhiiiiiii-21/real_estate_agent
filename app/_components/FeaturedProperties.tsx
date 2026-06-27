@@ -6,6 +6,8 @@ import { ArrowUpRight, ArrowRight, ChevronDown, ChevronUp, MapPin, SlidersHorizo
 import { useState, useRef, useEffect } from "react";
 import { FilterDropdown } from "./_FeaturedProperties/FilterDropdown";
 import { PropertyModal } from "./_FeaturedProperties/PropertyModal";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const FeaturedProperties = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -13,6 +15,8 @@ const FeaturedProperties = () => {
   const [activeLocation, setActiveLocation] = useState("All Areas");
   const [selectedProperty, setSelectedProperty] = useState<any>(null);
   const filterRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const countRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -25,6 +29,71 @@ const FeaturedProperties = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
+  }, []);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
+    let ctx = gsap.context(() => {
+      // Split text word animation
+      gsap.fromTo(
+        ".featured-word",
+        { y: "100%", opacity: 0 },
+        {
+          y: "0%",
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            once: true,
+          }
+        }
+      );
+
+      // Counting animation for 384
+      if (countRef.current) {
+        gsap.fromTo(
+          countRef.current,
+          { innerHTML: "0" },
+          {
+            innerHTML: "384",
+            duration: 2,
+            snap: { innerHTML: 1 },
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 80%",
+              once: true,
+            }
+          }
+        );
+      }
+
+      // Smooth zoom out animation for property images independently
+      const images = gsap.utils.toArray<HTMLElement>(".featured-image");
+      images.forEach((img) => {
+        gsap.fromTo(
+          img,
+          { scale: 1.2 },
+          {
+            scale: 1,
+            duration: 1.5,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: img,
+              start: "top 85%",
+              once: true,
+            },
+            clearProps: "transform"
+          }
+        );
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   // Helper to parse price string to number for comparison
@@ -50,25 +119,29 @@ const FeaturedProperties = () => {
   });
 
   return (
-    <section className="py-20 font-instrument-sans w-full max-w-[1400px] mx-auto px-4">
+    <section ref={sectionRef} id="properties-section" className="mb-20 py-20 font-instrument-sans w-full max-w-[1400px] mx-auto px-4">
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
         <div>
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-orange-400"></span>
+            <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
             <span className="text-sm text-neutral-500 font-medium tracking-wide">
               Recent Recommendations
             </span>
           </div>
-          <h2 className="text-5xl md:text-7xl font-light tracking-tight text-neutral-900">
-            Featured Projects
+          <h2 className="text-5xl md:text-7xl font-light tracking-tight text-neutral-900 flex gap-4">
+            {"Featured Projects".split(" ").map((word, i) => (
+              <span key={i} className="overflow-hidden inline-block pb-1">
+                <span className="featured-word inline-block">{word}</span>
+              </span>
+            ))}
           </h2>
         </div>
-        <div className="flex items-baseline gap-2">
-          <span className="text-5xl md:text-7xl font-light tracking-tight text-neutral-900">
+        <div className="flex items-baseline gap-2 overflow-hidden pb-1">
+          <span ref={countRef} className="featured-word text-5xl md:text-7xl font-light tracking-tight text-neutral-900 inline-block">
             384
           </span>
-          <span className="text-sm text-neutral-400 font-medium">offers</span>
+          <span className="featured-word text-sm text-neutral-400 font-medium inline-block">offers</span>
         </div>
       </div>
 
@@ -133,13 +206,17 @@ const FeaturedProperties = () => {
             >
               {/* Default State (Fades out on hover) */}
               <div className="absolute inset-0 z-10 transition-opacity duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:opacity-0">
-                {/* Background Image */}
-                <Image
-                  src={property.heroImage}
-                  alt={property.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+                {/* Background Image Wrapper for GSAP */}
+                <div className="absolute inset-0 overflow-hidden rounded-[2rem]">
+                  <div className="w-full h-full relative featured-image">
+                    <Image
+                      src={property.heroImage}
+                      alt={property.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                </div>
 
                 {/* Gradient Overlay for Text Readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
@@ -196,15 +273,16 @@ const FeaturedProperties = () => {
                   </div>
                   
                   {/* View Details Button */}
-                  <div className="bg-[#EBEBEB] p-3 rounded-2xl flex flex-col justify-between items-start w-[88px] h-[88px] hover:bg-[#E0E0E0] transition-colors flex-shrink-0 shadow-sm border border-black/5">
+                  <div className="bg-[#F2F2F2] p-2.5 rounded-xl flex flex-col justify-between items-start w-[84px] h-[70px] hover:bg-[#E5E5E5] transition-colors flex-shrink-0 shadow-sm border border-black/5">
                     <div className="w-full flex justify-end">
-                      <div className="w-[22px] h-[22px] rounded-full border border-black/20 flex items-center justify-center bg-transparent">
-                        <ArrowRight className="w-3 h-3 text-black" />
+                      <div className="w-[22px] h-[22px] rounded-[6px] border border-black/15 flex items-center justify-center bg-transparent">
+                        <ArrowRight className="w-3 h-3 text-black" strokeWidth={1.5} />
                       </div>
                     </div>
-                    <div className="text-[11px] font-medium leading-tight text-black mt-auto flex flex-col items-start gap-1">
-                      <div className="w-0 h-0 border-t-[4px] border-t-transparent border-l-[6px] border-l-black border-b-[4px] border-b-transparent" />
-                      View<br/>Details
+                    <div className="text-[10.5px] font-medium leading-[1.1] text-black mt-auto flex flex-col items-start gap-[2px]">
+                      <div className="leading-[1.1]">
+                         View<br/>Details
+                      </div>
                     </div>
                   </div>
                 </div>

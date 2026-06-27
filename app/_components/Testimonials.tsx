@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { gsap } from "gsap";
 
 interface Testimonial {
   id: number;
@@ -53,25 +54,22 @@ export default function Testimonials() {
     setActiveIndex((prev) => (prev === testimonialsData.length - 1 ? 0 : prev + 1));
   };
 
-  // Framer motion variants for the sliding testimonial text
-  const slideVariants = {
-    enter: (dir: number) => ({
-      x: dir > 0 ? 50 : -50,
-      opacity: 0
-    }),
-    center: {
-      x: 0,
-      opacity: 1
+  // Clean wrapper variants for AnimatePresence
+  const wrapperVariants = {
+    enter: { opacity: 0, y: 15 },
+    center: { 
+      opacity: 1, 
+      y: 0,
     },
-    exit: (dir: number) => ({
-      x: dir > 0 ? -50 : 50,
-      opacity: 0
-    })
+    exit: { 
+      opacity: 0,
+      y: -15,
+    }
   };
 
   return (
-    <section id="testimonials-section" className="bg-[#FAF9F7] py-16 md:py-24 px-4 md:px-8 lg:px-12 xl:px-16 font-instrument-sans overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section id="testimonials-section" className="mt-20 bg-[#FAF9F7] py-16 md:py-24 font-instrument-sans overflow-hidden">
+      <div className="px-4 md:px-8 lg:px-12 xl:px-16 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -81,17 +79,19 @@ export default function Testimonials() {
         >
           {/* Header Row */}
           <div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-gray-900 leading-[1.1]">
-              What Our Clients Say
-            </h2>
+            <SplitTextReveal 
+              text="What Our Clients Say" 
+              containerClassName="flex flex-wrap gap-x-[0.27em] gap-y-2"
+              textClassName="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-gray-900 leading-[1.1]"
+            />
           </div>
 
           {/* Main Grid: Left aggregator/quotes, Right sliding card */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            
+
             {/* Left Column: Aggregator Pill & Quote Bubble */}
             <div className="lg:col-span-5 flex flex-row sm:flex-row lg:flex-row items-center gap-6">
-              
+
               {/* Reviews Aggregator Pill */}
               <div className="flex items-center gap-3 bg-gray-50/80 border border-gray-100 rounded-full py-1.5 pl-1.5 pr-5 w-fit">
                 <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-gray-200/50 shadow-sm">
@@ -130,30 +130,53 @@ export default function Testimonials() {
               </div>
 
               {/* Coral/Peach Double Quotes Bubble */}
-              <div className="w-12 h-12 md:w-14 md:h-14 bg-[#FF957C] text-white rounded-full flex items-center justify-center shadow-sm shadow-[#FF957C]/20 shrink-0">
-                <span className="text-3xl md:text-4xl font-serif leading-none mt-2 select-none">”</span>
+              <div className="w-12 h-12 md:w-14 md:h-14 bg-blue-600 rounded-full flex items-center justify-center shadow-sm shadow-[#FF957C]/20 shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 49 49" className="w-5 h-5 md:w-6 md:h-6 opacity-90" aria-hidden="true">
+                  <path fill="white" d="M10.72 20.9.16 10.34 10.72 0l10.34 10.34L1.48 48.4.16 47.08 10.72 20.9Zm27.94 0L28.1 10.34 38.66 0 49 10.34 29.42 48.4l-1.32-1.32L38.66 20.9Z" />
+                </svg>
               </div>
 
             </div>
 
             {/* Right Column: Sliding Testimonial block */}
             <div className="lg:col-span-7 space-y-8 w-full">
-              
-              {/* Testimonial Text (Animated) */}
-              <div className="h-[260px] sm:h-[180px] lg:h-[180px] relative overflow-hidden flex items-center">
+
+              {/* Testimonial Text & Profile (Animated) */}
+              <div className="h-[380px] sm:h-[260px] lg:h-[280px] relative overflow-hidden flex flex-col justify-center [perspective:1200px]">
                 <AnimatePresence mode="wait" custom={direction}>
-                  <motion.p
+                  <motion.div
                     key={activeIndex}
                     custom={direction}
-                    variants={slideVariants}
+                    variants={wrapperVariants}
                     initial="enter"
                     animate="center"
                     exit="exit"
-                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-lg md:text-xl lg:text-2xl font-light text-gray-800 leading-relaxed tracking-tight text-left"
+                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                    className="w-full flex flex-col gap-6"
                   >
-                    {activeTestimonial.text}
-                  </motion.p>
+                    <SplitTextReveal text={activeTestimonial.text} />
+
+                    {/* Profile Block included in animation */}
+                    <div className="flex items-center gap-3">
+                      <div className="relative w-12 h-12 rounded-full overflow-hidden border border-gray-150 shadow-sm bg-gray-50">
+                        <Image
+                          src={activeTestimonial.avatar}
+                          alt={activeTestimonial.name}
+                          fill
+                          sizes="48px"
+                          className="object-cover"
+                        />
+                      </div>
+                      <div className="text-left">
+                        <h4 className="text-base font-semibold text-gray-900 leading-tight">
+                          {activeTestimonial.name}
+                        </h4>
+                        <p className="text-xs text-gray-400 mt-0.5">
+                          {activeTestimonial.location}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
                 </AnimatePresence>
               </div>
 
@@ -170,28 +193,7 @@ export default function Testimonials() {
               </div>
 
               {/* Client Profile details & Slider buttons */}
-              <div className="flex justify-between items-center pt-2">
-                
-                {/* Profile Block */}
-                <div className="flex items-center gap-3">
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden border border-gray-150 shadow-sm bg-gray-50">
-                    <Image
-                      src={activeTestimonial.avatar}
-                      alt={activeTestimonial.name}
-                      fill
-                      sizes="48px"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="text-left">
-                    <h4 className="text-base font-semibold text-gray-900 leading-tight">
-                      {activeTestimonial.name}
-                    </h4>
-                    <p className="text-xs text-gray-400 mt-0.5">
-                      {activeTestimonial.location}
-                    </p>
-                  </div>
-                </div>
+              <div className="flex justify-end items-center pt-2">
 
                 {/* Arrow Controls */}
                 <div className="flex items-center gap-3">
@@ -224,3 +226,48 @@ export default function Testimonials() {
     </section>
   );
 }
+
+const SplitTextReveal: React.FC<{ 
+  text: string;
+  containerClassName?: string;
+  textClassName?: string;
+}> = ({ 
+  text,
+  containerClassName = "flex flex-wrap gap-x-[0.27em] gap-y-1",
+  textClassName = "text-lg md:text-xl lg:text-2xl font-light text-gray-800 leading-relaxed tracking-tight text-left"
+}) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const words = containerRef.current.querySelectorAll('.word-inner');
+
+    gsap.fromTo(
+      words,
+      { yPercent: 120, opacity: 0 },
+      {
+        yPercent: 0,
+        opacity: 1,
+        duration: 0.6,
+        stagger: 0.015,
+        ease: 'power4.out',
+        delay: 0.15, // slight delay so the parent opacity fade starts first
+      }
+    );
+  }, [text]);
+
+  return (
+    <div ref={containerRef} className={containerClassName}>
+      {text.split(' ').map((word, i) => (
+        <div key={i} className="overflow-hidden inline-flex pt-1 -mt-1 pb-1 -mb-1">
+          <div
+            className={`word-inner ${textClassName}`}
+            style={{ willChange: 'transform' }}
+          >
+            {word}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
