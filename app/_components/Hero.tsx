@@ -24,7 +24,7 @@ export default function Hero() {
           {/* Full Background Image */}
           <div className="absolute inset-0 z-0">
             <Image
-              src="/hero_building.jpg"
+              src="/hero/hero_building.jpg"
               alt="Modern Building Background"
               width={2400}
               height={1500}
@@ -42,7 +42,7 @@ export default function Hero() {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="absolute left-6 sm:left-10 md:left-12 lg:left-16 top-[35%] sm:top-1/2 -translate-y-1/2 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-gray-900 leading-[1.08] max-w-xl text-left z-10"
           >
-            Guiding you home -
+            Guiding you home
             <br />
             with confidence.
           </motion.h1>
@@ -72,11 +72,11 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.8, type: "spring" }}
-            className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 lg:bottom-12 lg:right-12 z-20 w-28 h-38 sm:w-36 sm:h-48 md:w-44 md:h-58 lg:w-[210px] lg:h-[280px] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border-4 border-white/30"
+            className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 lg:bottom-12 lg:right-12 z-20 w-28 h-38 sm:w-36 sm:h-48 md:w-44 md:h-58 lg:w-[210px] lg:h-[280px] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border-4 border-white/30 bg-white/20 backdrop-blur-md"
           >
             <Image
-              src="/about/person_long.png"
-              alt="Agent Scofield"
+              src="/hero/hero_cbs.png"
+              alt="Agent Christopher Brent Sergakis"
               fill
               priority
               className="object-cover object-top hover:scale-105 transition-transform duration-700"
@@ -124,7 +124,7 @@ export default function Hero() {
                 TRUSTED INDEPENDENT REAL ESTATE GUIDANCE FOR BUYING, SELLING, AND INVESTING
               </p>
               <span className="text-[11px] md:text-xs font-bold tracking-widest text-white mt-1 block">
-                AGENT SCOFIELD
+                AGENT CHRISTOPHER BRENT SERGAKIS
               </span>
             </motion.div>
           </div>

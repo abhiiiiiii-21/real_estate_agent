@@ -99,9 +99,9 @@ export default function Footer() {
                 { name: "Why Choose Us", href: "#why-choose-section" },
                 { name: "Testimonials", href: "#testimonials-section" }
               ].map((link) => (
-                <a 
-                  key={link.name} 
-                  href={link.href} 
+                <a
+                  key={link.name}
+                  href={link.href}
                   onClick={(e) => handleScroll(e, link.href)}
                   className="group text-white text-xl font-normal w-fit"
                 >
@@ -140,7 +140,7 @@ export default function Footer() {
         {/* Huge Text Section */}
         <div className="mt-6 md:mt-20 w-full flex max-md:justify-center justify-start">
           <h1 className="text-[14vw] sm:text-[16vw] lg:text-[15.5vw] leading-[0.75] font-black text-white overflow-hidden flex max-md:pb-2 pb-4 tracking-tight">
-            {"SCOFIELD".split("").map((char, index) => (
+            {"CBS".split("").map((char, index) => (
               <span key={index} className="footer-letter inline-block translate-y-[120%]">
                 {char}
               </span>
@@ -168,7 +168,7 @@ export default function Footer() {
             ))}
           </div>
           <div className="flex flex-wrap max-md:justify-center items-center max-md:gap-4 gap-6 text-white/40 text-[11px] shrink-0 mt-2 xl:mt-0">
-            <span>SCOFIELD</span>
+            <span>CBS</span>
             <span>Copyright © 2026</span>
           </div>
         </div>

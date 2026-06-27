@@ -8,6 +8,8 @@ import About from "./_components/About";
 import Experience from "./_components/Experience";
 import Testimonials from "./_components/Testimonials";
 import Nabvar from "./_components/Nabvar";
+import CTA from "./_components/CTA";
+import ContactUs from "./_components/ContactUs";
 
 export default function Home() {
   return (
@@ -21,6 +23,8 @@ export default function Home() {
       <RecentlySold />
       <Testimonials />
       <FAQs />
+      <ContactUs />
+      <CTA />
       <Footer />
     </div>
   );

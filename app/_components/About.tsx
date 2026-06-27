@@ -25,7 +25,7 @@ export default function About() {
           className="p-8 md:p-12 lg:p-16 relative flex flex-col justify-between min-h-[550px] lg:min-h-[600px] gap-12"
         >
           {/* Top Row: Title & Badge */}
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 items-start">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-gray-900 leading-[1.1]">
               About
             </h2>
@@ -51,22 +51,57 @@ export default function About() {
               </div>
             </div>
 
-            {/* Center Column: Portrait Image */}
-            <div className="lg:col-span-4 flex justify-center items-center py-4 lg:py-0">
-              <motion.div
-                whileHover={{ y: -8, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="relative w-full max-w-[280px] sm:max-w-[320px] aspect-[3/4] rounded-[24px] md:rounded-[32px] overflow-hidden shadow-xl shadow-gray-150/50 group bg-gray-50"
-              >
-                <Image
-                  src="/about/person_long.png"
-                  alt="Christopher Brent"
-                  fill
-                  sizes="(max-width: 768px) 280px, 320px"
-                  priority
-                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                />
-              </motion.div>
+            {/* Center Column: Staggered Overlapping Portrait Images */}
+            <div className="lg:col-span-4 flex justify-center items-center py-8 lg:py-0">
+              <div className="relative w-full max-w-[500px] h-[380px] sm:h-[430px] md:h-[480px]">
+
+                {/* Left Image: person_1.jpg */}
+                <motion.div
+                  whileHover={{ y: -5, scale: 1.03, zIndex: 30 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="absolute left-[-12%] sm:left-[-10%] md:left-[-8%] top-[5%] w-[132px] sm:w-[156px] md:w-[168px] aspect-[3/4] rounded-[20px] md:rounded-[28px] overflow-hidden shadow-lg border-2 border-white bg-gray-50 z-10"
+                >
+                  <Image
+                    src="/about/person_1.jpg"
+                    alt="Team Member 1"
+                    fill
+                    sizes="(max-width: 768px) 132px, 168px"
+                    className="object-cover object-top"
+                  />
+                </motion.div>
+
+                {/* Center Image: person_long.png */}
+                <motion.div
+                  whileHover={{ y: -5, scale: 1.03, zIndex: 30 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[210px] sm:w-[248px] md:w-[270px] aspect-[3/4] rounded-[24px] md:rounded-[32px] overflow-hidden shadow-2xl border-4 border-white bg-gray-50 z-20"
+                >
+                  <Image
+                    src="/about/person_long.png"
+                    alt="Christopher Brent Sergakis"
+                    fill
+                    sizes="(max-width: 768px) 210px, 270px"
+                    priority
+                    className="object-cover object-top"
+                  />
+                </motion.div>
+
+                {/* Right Image: person_2.jpg */}
+                <motion.div
+                  whileHover={{ y: -5, scale: 1.03, zIndex: 30 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="absolute right-[-12%] sm:right-[-10%] md:right-[-8%] bottom-[5%] w-[144px] sm:w-[168px] md:w-[180px] aspect-[3/4] rounded-[20px] md:rounded-[28px] overflow-hidden shadow-lg border-2 border-white bg-gray-50 z-10"
+                >
+                  <Image
+                    src="/about/person_2.jpg"
+                    alt="Team Member 2"
+                    fill
+                    sizes="(max-width: 768px) 144px, 180px"
+                    className="object-cover object-top"
+                  />
+                </motion.div>
+
+              </div>
             </div>
 
             {/* Right Column: Experience & Focus */}
