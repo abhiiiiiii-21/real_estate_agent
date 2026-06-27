@@ -1,0 +1,70 @@
+[
+  {
+    "id": 1,
+    "title": "Harbor View Estate",
+    "location": "Belleair, FL",
+    "status": "Sold",
+    "price": "$1.28M",
+    "propertyType": "Luxury Home",
+    "BigImage": "/RecentlySold/1.png",
+    "SmallImage": "/RecentlySold/2.png",
+    "features": [
+      "5 Beds",
+      "4 Baths",
+      "4,280 Sqft",
+      "Waterfront",
+      "Pool"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Coastal Modern Residence",
+    "location": "Clearwater, FL",
+    "status": "Sold",
+    "price": "$945K",
+    "propertyType": "Single Family",
+    "BigImage": "/RecentlySold/1.png",
+    "SmallImage": "/RecentlySold/3.jpg",
+    "features": [
+      "4 Beds",
+      "3 Baths",
+      "3,150 Sqft",
+      "Open Concept",
+      "Renovated"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Bayfront Luxury Villa",
+    "location": "St. Petersburg, FL",
+    "status": "Sold",
+    "price": "$2.15M",
+    "propertyType": "Luxury Villa",
+    "BigImage": "/RecentlySold/1.png",
+    "SmallImage": "/RecentlySold/4.jpg",
+    "features": [
+      "6 Beds",
+      "5 Baths",
+      "5,900 Sqft",
+      "Private Dock",
+      "Ocean View"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Palm Grove Retreat",
+    "location": "Palm Harbor, FL",
+    "status": "Sold",
+    "price": "$875K",
+    "propertyType": "Family Home",
+    "BigImage": "/RecentlySold/1.png",
+    "SmallImage": "/RecentlySold/2.png",
+    "features": [
+      "4 Beds",
+      "3 Baths",
+      "2,940 Sqft",
+      "Large Backyard",
+      "Smart Home"
+    ]
+  }
+]
