@@ -17,9 +17,9 @@ export default function WhyChoose() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] max-w-2xl">
             Why Clients Choose Christopher Brent
           </h2>
-          <button className="bg-white text-black pl-6 pr-2 py-2 rounded-full text-sm font-medium flex items-center gap-4 hover:bg-gray-200 transition-colors">
-            Book a Free Consultation
-            <div className="bg-black text-white rounded-full p-2">
+          <button className="group relative flex items-center justify-between pl-5 pr-11 py-2 rounded-full border border-gray-200 bg-white text-sm font-medium text-black transition-all duration-500 ease-in-out hover:bg-gray-950 hover:text-white hover:border-gray-950 hover:pl-11 hover:pr-5 min-h-[38px] cursor-pointer">
+            <span className="transition-all duration-500 ease-in-out">Book a Free Consultation</span>
+            <div className="absolute left-[calc(100%-34px)] top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black text-white flex items-center justify-center transition-all duration-500 ease-in-out group-hover:left-2 group-hover:bg-white group-hover:text-black">
               <ArrowRight className="w-4 h-4" />
             </div>
           </button>

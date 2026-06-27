@@ -7,10 +7,12 @@ import WhyChoose from "./_components/WhyChoose";
 import About from "./_components/About";
 import Experience from "./_components/Experience";
 import Testimonials from "./_components/Testimonials";
+import Nabvar from "./_components/Nabvar";
 
 export default function Home() {
   return (
     <div>
+      <Nabvar />
       <Hero />
       <About />
       <Experience />

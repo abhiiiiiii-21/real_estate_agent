@@ -1,11 +1,179 @@
-import React from 'react'
+"use client";
 
-const Footer = () => {
+import React, { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLenis } from "lenis/react";
+
+gsap.registerPlugin(ScrollTrigger);
+
+export default function Footer() {
+  const containerRef = useRef<HTMLElement>(null);
+  const lenis = useLenis();
+
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href || href === "#") return;
+    e.preventDefault();
+    lenis?.scrollTo(href, {
+      duration: 1.8,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Expo ease for smooth finish
+    });
+  };
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.to(".footer-letter", {
+        y: "0%",
+        stagger: 0.05,
+        duration: 1.2,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 85%",
+          toggleActions: "play none none reverse"
+        }
+      });
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div>
-        
-    </div>
-  )
-}
+    <footer ref={containerRef} className="bg-[#151717] max-md:pt-16 max-md:pb-6 pt-24 pb-8 max-md:px-5 px-8 md:px-12 lg:px-16 overflow-hidden font-instrument-sans">
+      <div className="max-w-[1400px] mx-auto">
 
-export default Footer
+        {/* Top Section */}
+        <div className="flex flex-col lg:flex-row justify-between items-start w-full gap-12">
+
+          {/* Left Column - Subscribe & Contact */}
+          <div className="w-full lg:w-[45%]">
+            <h3 className="text-white text-2xl max-md:text-[22px] font-medium max-md:mb-6 mb-8">
+              Subscribe to our Newsletter!
+            </h3>
+
+            <div className="relative border-b border-white/20 pb-3 max-md:mb-10 mb-16 group">
+              <input
+                type="email"
+                placeholder="Enter address"
+                className="w-full bg-transparent text-white placeholder-white/40 text-sm focus:outline-none pr-8 border-none"
+              />
+              <button
+                type="button"
+                className="absolute right-0 top-1/2 -translate-y-1/2 text-white/80 group-hover:text-white transition-colors cursor-pointer"
+                aria-label="Subscribe"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="grid max-md:grid-cols-1 grid-cols-2 md:grid-cols-3 max-md:gap-y-8 gap-y-12 gap-x-8">
+              <div>
+                <h4 className="text-white/40 text-[11px] uppercase tracking-wider font-semibold mb-4">Head Office</h4>
+                <p className="text-white text-sm leading-relaxed">
+                  Christopher Brent Real Estate<br />
+                  Pinellas County, FL, USA
+                </p>
+              </div>
+              <div>
+                <h4 className="text-white/40 text-[11px] uppercase tracking-wider font-semibold mb-4">Email Us</h4>
+                <a href="mailto:hello@findrealestate.com" className="text-white text-sm hover:text-gray-300 transition-colors">
+                  hello@findrealestate.com
+                </a>
+              </div>
+              <div>
+                <h4 className="text-white/40 text-[11px] uppercase tracking-wider font-semibold mb-4">Call Us</h4>
+                <a href="tel:+12129949965" className="text-white text-sm hover:text-gray-300 transition-colors whitespace-nowrap">
+                  +1 (727) 555-0199
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column - Navigation & Socials */}
+          <div className="w-full lg:w-auto flex flex-col sm:flex-row max-md:gap-10 gap-16 lg:gap-32 max-md:mt-12 mt-16 lg:mt-0">
+            <div className="flex flex-col max-md:gap-4 gap-5">
+              {[
+                { name: "About", href: "#about-section" },
+                { name: "Experience", href: "#experience-section" },
+                { name: "Why Choose Us", href: "#why-choose-section" },
+                { name: "Testimonials", href: "#testimonials-section" }
+              ].map((link) => (
+                <a 
+                  key={link.name} 
+                  href={link.href} 
+                  onClick={(e) => handleScroll(e, link.href)}
+                  className="group text-white text-xl font-normal w-fit"
+                >
+                  <div className="relative overflow-hidden leading-tight">
+                    <span
+                      className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full after:content-[attr(data-text)] after:absolute after:left-0 after:top-full"
+                      data-text={link.name}
+                    >
+                      {link.name}
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+            <div className="flex flex-col max-md:gap-4 gap-5">
+              {[
+                { name: "Instagram", url: "https://instagram.com" },
+                { name: "Linkedin", url: "https://linkedin.com" }
+              ].map((link) => (
+                <a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" className="group text-white/80 text-sm w-fit">
+                  <div className="relative overflow-hidden leading-tight">
+                    <span
+                      className="block transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full after:content-[attr(data-text)] after:absolute after:left-0 after:top-full group-hover:text-white"
+                      data-text={link.name}
+                    >
+                      {link.name}
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+        </div>
+
+        {/* Huge Text Section */}
+        <div className="mt-6 md:mt-20 w-full flex max-md:justify-center justify-start">
+          <h1 className="text-[14vw] sm:text-[16vw] lg:text-[15.5vw] leading-[0.75] font-black text-white overflow-hidden flex max-md:pb-2 pb-4 tracking-tight">
+            {"SCOFIELD".split("").map((char, index) => (
+              <span key={index} className="footer-letter inline-block translate-y-[120%]">
+                {char}
+              </span>
+            ))}
+          </h1>
+        </div>
+
+        {/* Bottom Strip */}
+        <div className="max-md:mt-8 mt-12 flex flex-col xl:flex-row justify-between max-md:items-center items-start xl:items-center max-md:gap-4 gap-6 max-md:pt-4 pt-6 max-md:border-t max-md:border-white/10">
+          <div className="flex flex-wrap max-md:justify-center items-center gap-x-6 gap-y-3">
+            {[
+              "Terms",
+              "Privacy policy"
+            ].map((link) => (
+              <a key={link} href="#" className="group text-white/40 text-[11px] w-fit">
+                <div className="relative overflow-hidden leading-tight">
+                  <span
+                    className="block transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full after:content-[attr(data-text)] after:absolute after:left-0 after:top-full group-hover:text-white"
+                    data-text={link}
+                  >
+                    {link}
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+          <div className="flex flex-wrap max-md:justify-center items-center max-md:gap-4 gap-6 text-white/40 text-[11px] shrink-0 mt-2 xl:mt-0">
+            <span>SCOFIELD</span>
+            <span>Copyright © 2026</span>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+  );
+}

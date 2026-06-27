@@ -15,14 +15,14 @@ export default function About() {
   };
 
   return (
-    <section className="bg-[#FAF9F7] py-16 md:py-24 px-4 md:px-8 lg:px-12 xl:px-16 font-instrument-sans overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section id="about-section" className="bg-[#FAF9F7] py-16 md:py-24 font-instrument-sans overflow-hidden">
+      <div className="mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="bg-white rounded-[32px] md:rounded-[40px] lg:rounded-[48px] p-8 md:p-12 lg:p-16 relative shadow-sm border border-gray-100 flex flex-col justify-between min-h-[550px] lg:min-h-[600px] gap-12"
+          className="p-8 md:p-12 lg:p-16 relative flex flex-col justify-between min-h-[550px] lg:min-h-[600px] gap-12"
         >
           {/* Top Row: Title & Badge */}
           <div className="flex flex-col gap-4">
