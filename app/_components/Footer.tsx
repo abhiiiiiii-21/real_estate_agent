@@ -4,12 +4,24 @@ import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLenis } from "lenis/react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import aboutData from "@/data/About.json";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Footer() {
   const containerRef = useRef<HTMLElement>(null);
   const lenis = useLenis();
+
+  const profile = aboutData[0];
+  const { contact, socials } = profile;
+
+  // Parallax Effect
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end end"]
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["-40%", "0%"]);
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (!href || href === "#") return;
@@ -38,53 +50,35 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer ref={containerRef} className="bg-[#151717] max-md:pt-16 max-md:pb-6 pt-24 pb-8 max-md:px-5 px-8 md:px-12 lg:px-16 overflow-hidden font-instrument-sans">
-      <div className="max-w-[1400px] mx-auto">
+    <footer ref={containerRef} className="bg-black overflow-hidden font-instrument-sans relative w-full">
+      <motion.div style={{ y }} className="max-md:pt-16 max-md:pb-6 pt-24 pb-8 max-md:px-5 px-8 md:px-12 lg:px-16 w-full h-full flex flex-col items-center">
+        <div className="max-w-[1400px] mx-auto w-full">
 
         {/* Top Section */}
         <div className="flex flex-col lg:flex-row justify-between items-start w-full gap-12">
 
-          {/* Left Column - Subscribe & Contact */}
-          <div className="w-full lg:w-[45%]">
-            <h3 className="text-white text-2xl max-md:text-[22px] font-medium max-md:mb-6 mb-8">
-              Subscribe to our Newsletter!
-            </h3>
+          {/* Left Column - Contact */}
+          <div className="w-full lg:flex-1 lg:pr-12">
 
-            <div className="relative border-b border-white/20 pb-3 max-md:mb-10 mb-16 group">
-              <input
-                type="email"
-                placeholder="Enter address"
-                className="w-full bg-transparent text-white placeholder-white/40 text-sm focus:outline-none pr-8 border-none"
-              />
-              <button
-                type="button"
-                className="absolute right-0 top-1/2 -translate-y-1/2 text-white/80 group-hover:text-white transition-colors cursor-pointer"
-                aria-label="Subscribe"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                </svg>
-              </button>
-            </div>
 
-            <div className="grid max-md:grid-cols-1 grid-cols-2 md:grid-cols-3 max-md:gap-y-8 gap-y-12 gap-x-8">
+            <div className="grid max-md:grid-cols-1 grid-cols-2 md:grid-cols-3 max-md:gap-y-8 gap-y-12 gap-x-10 lg:gap-x-16">
               <div>
-                <h4 className="text-white/40 text-[11px] uppercase tracking-wider font-semibold mb-4">Head Office</h4>
+                <h4 className="text-white/40 text-[11px] uppercase tracking-wider font-semibold mb-4">{contact.office.title}</h4>
                 <p className="text-white text-sm leading-relaxed">
-                  Christopher Brent Real Estate<br />
-                  Pinellas County, FL, USA
+                  {contact.office.company}<br />
+                  {contact.office.address}
                 </p>
               </div>
               <div>
-                <h4 className="text-white/40 text-[11px] uppercase tracking-wider font-semibold mb-4">Email Us</h4>
-                <a href="mailto:hello@findrealestate.com" className="text-white text-sm hover:text-gray-300 transition-colors">
-                  hello@findrealestate.com
+                <h4 className="text-white/40 text-[11px] uppercase tracking-wider font-semibold mb-4">{contact.email.title}</h4>
+                <a href={`mailto:${contact.email.value}`} className="text-white text-sm hover:text-gray-300 transition-colors">
+                  {contact.email.value}
                 </a>
               </div>
               <div>
-                <h4 className="text-white/40 text-[11px] uppercase tracking-wider font-semibold mb-4">Call Us</h4>
-                <a href="tel:+12129949965" className="text-white text-sm hover:text-gray-300 transition-colors whitespace-nowrap">
-                  +1 (727) 555-0199
+                <h4 className="text-white/40 text-[11px] uppercase tracking-wider font-semibold mb-4">{contact.phone.title}</h4>
+                <a href={`tel:${contact.phone.value.replace(/[^0-9+]/g, '')}`} className="text-white text-sm hover:text-gray-300 transition-colors whitespace-nowrap">
+                  {contact.phone.value}
                 </a>
               </div>
             </div>
@@ -118,9 +112,9 @@ export default function Footer() {
             </div>
             <div className="flex flex-col max-md:gap-4 gap-5">
               {[
-                { name: "Instagram", url: "https://instagram.com" },
-                { name: "Linkedin", url: "https://linkedin.com" }
-              ].map((link) => (
+                { name: "Instagram", url: socials.instagram },
+                { name: "Facebook", url: socials.facebook }
+              ].filter(link => link.url).map((link) => (
                 <a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" className="group text-white/80 text-sm w-fit">
                   <div className="relative overflow-hidden leading-tight">
                     <span
@@ -139,12 +133,10 @@ export default function Footer() {
 
         {/* Huge Text Section */}
         <div className="mt-6 md:mt-20 w-full flex max-md:justify-center justify-start">
-          <h1 className="text-[14vw] sm:text-[16vw] lg:text-[15.5vw] leading-[0.75] font-black text-white overflow-hidden flex max-md:pb-2 pb-4 tracking-tight">
-            {"CBS".split("").map((char, index) => (
-              <span key={index} className="footer-letter inline-block translate-y-[120%]">
-                {char}
-              </span>
-            ))}
+          <h1 className="text-[14.5vw] sm:text-[13vw] lg:text-[12.5vw] leading-[0.8] font-black text-white overflow-hidden flex pt-4 max-md:pb-2 pb-4 tracking-tight">
+            <span className="footer-letter inline-block translate-y-[120%]">
+              CHRISTOPHER
+            </span>
           </h1>
         </div>
 
@@ -168,12 +160,12 @@ export default function Footer() {
             ))}
           </div>
           <div className="flex flex-wrap max-md:justify-center items-center max-md:gap-4 gap-6 text-white/40 text-[11px] shrink-0 mt-2 xl:mt-0">
-            <span>CBS</span>
             <span>Copyright © 2026</span>
           </div>
         </div>
 
-      </div>
+        </div>
+      </motion.div>
     </footer>
   );
 }

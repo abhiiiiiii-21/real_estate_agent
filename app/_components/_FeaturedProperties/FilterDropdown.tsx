@@ -94,10 +94,10 @@ export function FilterDropdown({
               onClick={() => setSelectedLocation("All Areas")}
             >
               <div className={`grid grid-cols-2 gap-1 w-10 h-10 flex-shrink-0 rounded-xl overflow-hidden ${selectedLocation === "All Areas" ? 'border-2 border-white/20 bg-white/20' : ''}`}>
-                <div className="relative overflow-hidden"><Image src={featuredData[0].heroImage} alt="loc" fill className="object-cover" /></div>
-                <div className="relative overflow-hidden"><Image src={featuredData[1].heroImage} alt="loc" fill className="object-cover" /></div>
-                <div className="relative overflow-hidden"><Image src={featuredData[2].heroImage} alt="loc" fill className="object-cover" /></div>
-                <div className="relative overflow-hidden"><Image src={featuredData[0].heroImage} alt="loc" fill className="object-cover" /></div>
+                <div className="relative overflow-hidden"><Image src={featuredData[0].heroImage} alt="loc" fill sizes="50px" className="object-cover" /></div>
+                <div className="relative overflow-hidden"><Image src={featuredData[1].heroImage} alt="loc" fill sizes="50px" className="object-cover" /></div>
+                <div className="relative overflow-hidden"><Image src={featuredData[2].heroImage} alt="loc" fill sizes="50px" className="object-cover" /></div>
+                <div className="relative overflow-hidden"><Image src={featuredData[0].heroImage} alt="loc" fill sizes="50px" className="object-cover" /></div>
               </div>
               <span className={`text-[13px] font-medium ${selectedLocation === "All Areas" ? '' : 'text-neutral-700'}`}>All Areas</span>
             </div>
@@ -116,7 +116,7 @@ export function FilterDropdown({
                   onClick={() => setSelectedLocation(loc.name)}
                 >
                   <div className={`relative w-8 h-8 rounded-lg overflow-hidden flex-shrink-0 ${selectedLocation === loc.name ? 'border-2 border-white/20' : ''}`}>
-                    <Image src={loc.img} alt={loc.name} fill className="object-cover" />
+                    <Image src={loc.img} alt={loc.name} fill sizes="50px" className="object-cover" />
                   </div>
                   <span className={`text-[12px] font-medium ${selectedLocation === loc.name ? '' : 'text-neutral-700 leading-tight'}`}>{loc.name}</span>
                 </div>

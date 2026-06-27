@@ -130,7 +130,7 @@ const FeaturedProperties = () => {
             </span>
           </div>
           <h2 className="text-5xl md:text-7xl font-light tracking-tight text-neutral-900 flex gap-4">
-            {"Featured Projects".split(" ").map((word, i) => (
+            {"Featured Properties".split(" ").map((word, i) => (
               <span key={i} className="overflow-hidden inline-block pb-1">
                 <span className="featured-word inline-block">{word}</span>
               </span>
@@ -213,6 +213,7 @@ const FeaturedProperties = () => {
                       src={property.heroImage}
                       alt={property.title}
                       fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
@@ -289,7 +290,7 @@ const FeaturedProperties = () => {
 
                 {/* Bottom Image */}
                 <div className="relative w-full flex-grow rounded-[1.5rem] overflow-hidden">
-                  <Image src={property.heroImage} alt={property.title} fill className="object-cover" />
+                  <Image src={property.heroImage} alt={property.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
                 </div>
               </div>
             </div>

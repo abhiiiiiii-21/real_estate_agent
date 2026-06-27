@@ -1,9 +1,27 @@
 [
-    {
-        "name" : "Christopher",
-        "instagram" : "",
-        "facebook" : "",
-        "twitter" : "",
-        "linkedin" : ""
+  {
+    "name": "Christopher Brent Sergakis",
+    "branding": "Christopher Brent Real Estate",
+
+    "contact": {
+      "office": {
+        "title": "Office",
+        "company": "The Shop Real Estate Co.",
+        "address": "309 Belleview Blvd, Belleair, FL 33756"
+      },
+      "email": {
+        "title": "Email",
+        "value": "christopherbrent@theshopre.com"
+      },
+      "phone": {
+        "title": "Phone",
+        "value": "+1 (727) 366-9710"
+      }
+    },
+
+    "socials": {
+      "instagram": "https://www.instagram.com/family_friends_realestate/",
+      "facebook": "https://www.facebook.com/family_friends_realestate"
     }
+  }
 ]

@@ -14,7 +14,7 @@ export default function WhyChoose() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    
+
     let ctx = gsap.context(() => {
       // Header text word stagger reveal
       gsap.fromTo(
@@ -61,7 +61,7 @@ export default function WhyChoose() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-[#050505] text-white py-24 px-4 md:px-12 lg:px-24 overflow-visible font-instrument-sans">
+    <section ref={sectionRef} id="why-choose-section" className="bg-[#050505] text-white py-24 px-4 md:px-12 lg:px-24 overflow-visible font-instrument-sans">
       <div className="max-w-7xl mx-auto mt-10">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
@@ -74,8 +74,8 @@ export default function WhyChoose() {
           </h2>
           <button className="group inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white text-black text-sm font-semibold transition-transform hover:scale-[1.02] cursor-pointer shrink-0">
             <div className="relative overflow-hidden leading-tight">
-              <span 
-                className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full after:content-[attr(data-text)] after:absolute after:left-0 after:top-full" 
+              <span
+                className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full after:content-[attr(data-text)] after:absolute after:left-0 after:top-full"
                 data-text="Book a Free Consultation"
               >
                 Book a Free Consultation
@@ -157,6 +157,7 @@ export default function WhyChoose() {
                               src={item.image}
                               alt={item.title}
                               fill
+                              sizes="(max-width: 768px) 100vw, 340px"
                               className="object-cover"
                             />
                           </motion.div>

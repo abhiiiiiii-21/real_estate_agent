@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
 
@@ -103,6 +103,7 @@ export default function Testimonials() {
                       src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&h=80&q=80"
                       alt="Reviewer 1"
                       fill
+                      sizes="28px"
                       className="object-cover"
                     />
                   </div>
@@ -111,6 +112,7 @@ export default function Testimonials() {
                       src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&h=80&q=80"
                       alt="Reviewer 2"
                       fill
+                      sizes="28px"
                       className="object-cover"
                     />
                   </div>
@@ -119,6 +121,7 @@ export default function Testimonials() {
                       src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&h=80&q=80"
                       alt="Reviewer 3"
                       fill
+                      sizes="28px"
                       className="object-cover"
                     />
                   </div>
@@ -237,24 +240,29 @@ const SplitTextReveal: React.FC<{
   textClassName = "text-lg md:text-xl lg:text-2xl font-light text-gray-800 leading-relaxed tracking-tight text-left"
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
   useEffect(() => {
     if (!containerRef.current) return;
     const words = containerRef.current.querySelectorAll('.word-inner');
 
-    gsap.fromTo(
-      words,
-      { yPercent: 120, opacity: 0 },
-      {
-        yPercent: 0,
-        opacity: 1,
-        duration: 0.6,
-        stagger: 0.015,
-        ease: 'power4.out',
-        delay: 0.15, // slight delay so the parent opacity fade starts first
-      }
-    );
-  }, [text]);
+    // Hide initially to prevent flash before scroll
+    gsap.set(words, { yPercent: 120, opacity: 0 });
+
+    if (isInView) {
+      gsap.to(
+        words,
+        {
+          yPercent: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.015,
+          ease: 'power4.out',
+          delay: 0.15, // slight delay so the parent opacity fade starts first
+        }
+      );
+    }
+  }, [text, isInView]);
 
   return (
     <div ref={containerRef} className={containerClassName}>

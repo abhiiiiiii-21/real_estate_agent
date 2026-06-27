@@ -15,6 +15,7 @@ const RecentlySold = () => {
               src={project.BigImage}
               alt={project.title}
               fill
+              sizes="(max-width: 768px) 100vw, 100vw"
               className="object-cover"
             />
             {/* Dark overlay for text readability */}
@@ -49,6 +50,7 @@ const RecentlySold = () => {
               src={project.SmallImage}
               alt={`${project.title} Interior`}
               fill
+              sizes="(max-width: 768px) 50vw, 33vw"
               className="object-cover"
             />
           </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -9,8 +10,8 @@ export default function Nabvar() {
 
   const navLinks = [
     { name: "About", href: "#about-section" },
-    { name: "Services", href: "#services-section" },
     { name: "Properties", href: "#properties-section" },
+    { name: "Why Christopher", href: "#why-choose-section" },
     { name: "Testimonials", href: "#testimonials-section" }
   ];
 
@@ -25,10 +26,10 @@ export default function Nabvar() {
   };
 
   return (
-    <motion.nav 
+    <motion.nav
       initial={{ y: "-100%", opacity: 0 }}
       animate={{ y: "0%", opacity: 1 }}
-      transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+      transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 1.6 }}
       className="w-full bg-[#FAF9F7] py-6 px-6 md:px-12 lg:px-16 flex justify-between items-center font-instrument-sans relative z-50 select-none"
     >
       {/* Left side Logo */}
@@ -59,19 +60,21 @@ export default function Nabvar() {
 
       {/* Right side CTA (Desktop) */}
       <div className="hidden md:flex">
-        <a
-          href="#contact"
-          className="group inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-gray-900 text-white text-sm font-semibold transition-transform hover:scale-[1.02]"
+        <Link
+          href="https://www.instagram.com/family_friends_realestate/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-black text-white text-sm font-semibold transition-transform hover:scale-[1.02]"
         >
           <div className="relative overflow-hidden leading-tight">
-            <span 
-              className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full after:content-[attr(data-text)] after:absolute after:left-0 after:top-full" 
+            <span
+              className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full after:content-[attr(data-text)] after:absolute after:left-0 after:top-full"
               data-text="Get In Touch"
             >
               Get In Touch
             </span>
           </div>
-        </a>
+        </Link>
       </div>
 
       {/* Hamburger Button (Mobile) */}
@@ -111,20 +114,22 @@ export default function Nabvar() {
               </a>
             ))}
             <div className="h-[1px] bg-gray-100 my-1" />
-            <a
-              href="#contact"
+            <Link
+              href="https://www.instagram.com/family_friends_realestate/"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
-              className="group inline-flex items-center justify-center w-full py-4 rounded-full bg-gray-900 text-white text-base font-semibold transition-transform hover:scale-[1.02] no-underline"
+              className="group inline-flex items-center justify-center w-full py-4 rounded-full bg-black text-white text-base font-semibold transition-transform hover:scale-[1.02] no-underline"
             >
               <div className="relative overflow-hidden leading-tight">
-                <span 
-                  className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full after:content-[attr(data-text)] after:absolute after:left-0 after:top-full" 
+                <span
+                  className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full after:content-[attr(data-text)] after:absolute after:left-0 after:top-full"
                   data-text="Get In Touch"
                 >
                   Get In Touch
                 </span>
               </div>
-            </a>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

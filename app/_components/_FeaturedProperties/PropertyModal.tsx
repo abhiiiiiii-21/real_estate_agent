@@ -65,9 +65,9 @@ const RevealImage = ({ src, alt, delay = 0, className = "", isActive }: { src: s
         initial={{ scale: 1.3 }}
         animate={{ scale: hasRevealed ? 1 : 1.3 }}
         transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1], delay: hasRevealed ? delay : 0 }}
-        className="w-full h-full"
+        className="relative w-full h-full"
       >
-        <Image src={src} alt={alt} fill className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
+        <Image src={src} alt={alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
       </motion.div>
     </motion.div>
   );
@@ -262,7 +262,7 @@ export function PropertyModal({ property, onClose }: PropertyModalProps) {
           >
             {/* Left side: Hero Image */}
             <div className="relative w-[45%] h-full rounded-[1.5rem] overflow-hidden group">
-              <Image src={property.heroImage} alt={property.title} fill className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
+              <Image src={property.heroImage} alt={property.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
             </div>
 
             {/* Right side: Content */}
@@ -337,7 +337,7 @@ export function PropertyModal({ property, onClose }: PropertyModalProps) {
             <div className="w-[50%] flex flex-col py-6 px-10 pr-12">
               <div className="flex items-center gap-6 mb-12">
                 <div className="relative w-20 h-[52px] rounded-[14px] overflow-hidden flex-shrink-0 shadow-sm border border-black/5">
-                  <Image src={property.gallery.exterior[0] || property.heroImage} alt="Thumbnail" fill className="object-cover" />
+                  <Image src={property.gallery.exterior[0] || property.heroImage} alt="Thumbnail" fill sizes="10vw" className="object-cover" />
                 </div>
                 <div className="flex items-center gap-8">
                   <div className="flex flex-col">
@@ -363,7 +363,7 @@ export function PropertyModal({ property, onClose }: PropertyModalProps) {
             </div>
             
             <div className="relative w-[50%] h-full rounded-[1.5rem] overflow-hidden group">
-              <Image src={property.gallery.interior[0] || property.heroImage} alt="About" fill className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
+              <Image src={property.gallery.interior[0] || property.heroImage} alt="About" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
             </div>
           </div>
 
@@ -404,7 +404,7 @@ export function PropertyModal({ property, onClose }: PropertyModalProps) {
                   <div className="flex-1 bg-white rounded-[1.5rem] p-6 flex flex-col gap-1">
                     {col3.length > 2 && col3.slice(0, 2).map((f: string, i: number) => renderFeature(f, i))}
                     <div className="relative w-full h-[300px] rounded-[1rem] overflow-hidden my-3 shadow-sm border border-neutral-100 group">
-                      <Image src={property.gallery.exterior[1] || property.heroImage} alt="Feature" fill className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
+                      <Image src={property.gallery.exterior[1] || property.heroImage} alt="Feature" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
                     </div>
                     {(col3.length > 2 ? col3.slice(2) : col3).map((f: string, i: number) => renderFeature(f, i + 2))}
                   </div>
@@ -466,7 +466,7 @@ export function PropertyModal({ property, onClose }: PropertyModalProps) {
               <div className="w-[75%] h-full flex flex-col justify-between items-end py-4 pl-8">
                 {/* Huge Map */}
                 <div className="relative w-full flex-1 mb-4">
-                  <Image src={property.floorPlans[activeFloor]?.image || property.heroImage} alt="Floor Plan" fill className="object-contain object-center scale-[1.15] origin-center" />
+                  <Image src={property.floorPlans[activeFloor]?.image || property.heroImage} alt="Floor Plan" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain object-center scale-[1.15] origin-center" />
                 </div>
 
                 {/* Bottom Actions removed per request */}

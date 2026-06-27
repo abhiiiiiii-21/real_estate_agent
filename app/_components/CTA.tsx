@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -47,15 +48,21 @@ export default function CTA() {
           transition={{ delay: 0.3, duration: 0.8 }}
           className="z-10"
         >
-          <a
-            href="#contact"
-            className="group relative flex items-center justify-between pl-6 pr-12 py-3 rounded-full border border-white/20 bg-white text-sm font-semibold text-gray-900 transition-all duration-500 ease-in-out hover:bg-gray-950 hover:text-white hover:border-gray-950 hover:pl-12 hover:pr-6 min-h-[44px] w-fit shadow-xl cursor-pointer"
+          <Link
+            href="https://www.instagram.com/family_friends_realestate/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white text-gray-900 text-sm font-semibold transition-transform hover:scale-[1.02] shadow-xl w-fit cursor-pointer no-underline font-instrument-sans"
           >
-            <span className="transition-all duration-500 ease-in-out">Let&apos;s Get Started</span>
-            <div className="absolute left-[calc(100%-38px)] top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-gray-950 text-white flex items-center justify-center transition-all duration-500 ease-in-out group-hover:left-2 group-hover:bg-white group-hover:text-gray-950">
-              <ArrowRight className="w-4 h-4" />
+            <div className="relative overflow-hidden leading-tight">
+              <span 
+                className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full after:content-[attr(data-text)] after:absolute after:left-0 after:top-full" 
+                data-text="Get in Touch"
+              >
+                Get in Touch
+              </span>
             </div>
-          </a>
+          </Link>
         </motion.div>
 
       </motion.div>

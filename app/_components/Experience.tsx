@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import experienceData from "@/data/Experience.json";
 
@@ -159,9 +160,11 @@ export default function Experience() {
             <p className="text-gray-500 text-sm md:text-base leading-relaxed">
               {content.description}
             </p>
-            <a 
-              href="#featured-sales" 
-              className="group inline-flex items-center justify-center bg-gray-900 text-white rounded-full px-8 py-3.5 text-xs md:text-sm font-semibold transition-transform hover:scale-[1.02] shadow-sm cursor-pointer no-underline"
+            <Link 
+              href="https://www.instagram.com/family_friends_realestate/" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center bg-black text-white rounded-full px-8 py-3.5 text-xs md:text-sm font-semibold transition-transform hover:scale-[1.02] shadow-sm cursor-pointer no-underline"
             >
               <div className="relative overflow-hidden leading-tight">
                 <span 
@@ -171,7 +174,7 @@ export default function Experience() {
                   {content.button}
                 </span>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
 
