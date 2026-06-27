@@ -4,14 +4,20 @@ import FeaturedProperties from "./_components/FeaturedProperties";
 import Hero from "./_components/Hero";
 import RecentlySold from "./_components/RecentlySold";
 import WhyChoose from "./_components/WhyChoose";
+import About from "./_components/About";
+import Experience from "./_components/Experience";
+import Testimonials from "./_components/Testimonials";
 
 export default function Home() {
   return (
     <div>
       <Hero />
+      <About />
+      <Experience />
       <WhyChoose />
       <FeaturedProperties />
       <RecentlySold />
+      <Testimonials />
       <FAQs />
       <Footer />
     </div>
