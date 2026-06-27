@@ -16,8 +16,8 @@ export default function Home() {
       <Hero />
       <About />
       <Experience />
-      <WhyChoose />
       <FeaturedProperties />
+      <WhyChoose />
       <RecentlySold />
       <Testimonials />
       <FAQs />

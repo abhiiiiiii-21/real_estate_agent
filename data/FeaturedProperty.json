@@ -1,0 +1,268 @@
+[
+  {
+    "id": 1,
+    "title": "Modern Waterfront Estate",
+    "developer": "Christopher Brent Realty",
+    "location": "Belleair, Florida",
+    "propertyType": "Luxury Villa",
+    "status": "For Sale",
+    "price": "$2,495,000",
+    "overview": {
+      "bedrooms": 5,
+      "bathrooms": 6,
+      "garage": 3,
+      "area": "5,420 Sqft",
+      "lot": "0.48 Acres",
+      "yearBuilt": 2023
+    },
+    "description": [
+      "Positioned along Belleair's exclusive waterfront, this contemporary residence blends timeless architecture with panoramic bay views.",
+      "Designed for modern luxury living, the home features expansive entertaining spaces, floor-to-ceiling glass, designer finishes, and seamless indoor-outdoor living."
+    ],
+    "heroImage": "/Featured/1/hero.png",
+    "gallery": {
+      "exterior": [
+        "/Featured/1/exterior/1.jpg",
+        "/Featured/1/exterior/2.jpg",
+        "/Featured/1/exterior/3.jpg",
+        "/Featured/1/exterior/4.jpg",
+        "/Featured/1/exterior/5.jpg"
+      ],
+      "interior": [
+        "/Featured/1/interior/1.jpg",
+        "/Featured/1/interior/2.jpg",
+        "/Featured/1/interior/3.jpg",
+        "/Featured/1/interior/4.jpg",
+        "/Featured/1/interior/5.jpg"
+      ]
+    },
+    "features": [
+      "Waterfront",
+      "Infinity Pool",
+      "Private Dock",
+      "Chef's Kitchen",
+      "Quartz Countertops",
+      "Walk-in Pantry",
+      "Wine Cellar",
+      "Smart Home Automation",
+      "Home Office",
+      "Media Room",
+      "Private Gym",
+      "Spa-Inspired Primary Suite",
+      "Walk-in Closets",
+      "Outdoor Kitchen",
+      "Covered Lanai",
+      "Three-Car Garage",
+      "Hurricane Impact Windows",
+      "Floor-to-Ceiling Glass",
+      "Bay Views",
+      "Gated Community",
+      "Designer Lighting",
+      "Custom Cabinetry"
+    ],
+    "floorPlans": [
+      {
+        "floor": "Ground Floor",
+        "image": "/Featured/1/ground.jpg"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Harbor View Residence",
+    "developer": "Christopher Brent Realty",
+    "location": "Clearwater Beach, Florida",
+    "propertyType": "Luxury Condo",
+    "status": "For Sale",
+    "price": "$1,680,000",
+    "overview": {
+      "bedrooms": 4,
+      "bathrooms": 4,
+      "garage": 2,
+      "area": "3,180 Sqft",
+      "lot": "Oceanfront",
+      "yearBuilt": 2022
+    },
+    "description": [
+      "An elegant beachfront residence offering uninterrupted Gulf views, refined interiors, and resort-inspired amenities.",
+      "Every room is designed to maximize natural light while creating an effortless connection to the waterfront."
+    ],
+    "heroImage": "/Featured/2/hero.png",
+    "gallery": {
+      "exterior": [
+        "/Featured/2/exterior/1.jpg",
+        "/Featured/2/exterior/2.jpg",
+        "/Featured/2/exterior/3.jpg"
+      ],
+      "interior": [
+        "/Featured/2/interior/1.jpg",
+        "/Featured/2/interior/2.jpg",
+        "/Featured/2/interior/3.jpg",
+        "/Featured/2/interior/4.jpg"
+      ]
+    },
+    "features": [
+      "Beachfront Access",
+      "Private Balcony",
+      "Panoramic Gulf Views",
+      "Open Floor Plan",
+      "Designer Kitchen",
+      "Premium Appliances",
+      "Quartz Island",
+      "Luxury Primary Suite",
+      "Spa Bathroom",
+      "Walk-in Closet",
+      "Smart Home System",
+      "Private Elevator",
+      "Resort-Style Pool",
+      "Fitness Center",
+      "Concierge Service",
+      "Secure Parking",
+      "High Ceilings",
+      "Hurricane Impact Glass",
+      "Waterfront Terrace",
+      "Pet Friendly",
+      "Designer Lighting",
+      "Wine Refrigerator"
+    ],
+    "floorPlans": [
+      {
+        "floor": "Main Layout",
+        "image": "/Featured/2/ground.jpg"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Bayfront Modern Retreat",
+    "developer": "Christopher Brent Realty",
+    "location": "St. Petersburg, Florida",
+    "propertyType": "Modern Estate",
+    "status": "For Sale",
+    "price": "$3,250,000",
+    "overview": {
+      "bedrooms": 6,
+      "bathrooms": 7,
+      "garage": 4,
+      "area": "6,940 Sqft",
+      "lot": "0.72 Acres",
+      "yearBuilt": 2024
+    },
+    "description": [
+      "A striking architectural masterpiece designed for those seeking exceptional waterfront living.",
+      "Featuring expansive entertainment spaces, private terraces, luxury amenities, and breathtaking sunset views."
+    ],
+    "heroImage": "/Featured/3/hero.png",
+    "gallery": {
+      "exterior": [
+        "/Featured/3/exterior/1.jpg",
+        "/Featured/3/exterior/2.jpg",
+        "/Featured/3/exterior/3.jpg",
+        "/Featured/3/exterior/4.jpg"
+      ],
+      "interior": [
+        "/Featured/3/interior/1.jpg",
+        "/Featured/3/interior/2.jpg",
+        "/Featured/3/interior/3.jpg",
+        "/Featured/3/interior/4.jpg",
+        "/Featured/3/interior/5.jpg"
+      ]
+    },
+    "features": [
+      "Private Marina",
+      "Waterfront",
+      "Infinity Pool",
+      "Outdoor Lounge",
+      "Fire Pit",
+      "Chef's Kitchen",
+      "Butler's Pantry",
+      "Wine Room",
+      "Home Theater",
+      "Private Office",
+      "Fitness Studio",
+      "Guest Suite",
+      "Smart Home Automation",
+      "Solar Energy Ready",
+      "Three-Car Garage",
+      "Outdoor Dining Area",
+      "Covered Terrace",
+      "Luxury Landscaping",
+      "Sunset Views",
+      "Gated Entry",
+      "Custom Cabinetry",
+      "High-Speed Internet"
+    ],
+    "floorPlans": [
+      {
+        "floor": "Ground Floor",
+        "image": "/Featured/3/ground.jpg"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Coastal Luxury Residence",
+    "developer": "Christopher Brent Realty",
+    "location": "Palm Harbor, Florida",
+    "propertyType": "Luxury Home",
+    "status": "For Sale",
+    "price": "$2,150,000",
+    "overview": {
+      "bedrooms": 5,
+      "bathrooms": 5,
+      "garage": 3,
+      "area": "4,860 Sqft",
+      "lot": "0.55 Acres",
+      "yearBuilt": 2021
+    },
+    "description": [
+      "Blending elegant coastal architecture with sophisticated interiors, this residence offers luxurious living just moments from the Gulf Coast.",
+      "Thoughtfully designed for entertaining and everyday comfort, every detail reflects timeless craftsmanship."
+    ],
+    "heroImage": "/Featured/4/hero.png",
+    "gallery": {
+      "exterior": [
+        "/Featured/4/exterior/1.jpg",
+        "/Featured/4/exterior/2.jpg",
+        "/Featured/4/exterior/3.jpg",
+        "/Featured/4/exterior/4.jpg"
+      ],
+      "interior": [
+        "/Featured/4/interior/1.jpg",
+        "/Featured/4/interior/2.jpg",
+        "/Featured/4/interior/3.jpg",
+        "/Featured/4/interior/4.jpg"
+      ]
+    },
+    "features": [
+      "Beach Access",
+      "Ocean Views",
+      "Private Balcony",
+      "Infinity Edge Pool",
+      "Designer Interiors",
+      "Floor-to-Ceiling Windows",
+      "High Ceilings",
+      "Chef's Kitchen",
+      "Built-in Coffee Bar",
+      "Walk-in Pantry",
+      "Luxury Bathrooms",
+      "Walk-in Closets",
+      "Smart Lighting",
+      "Private Elevator",
+      "Fitness Center",
+      "Rooftop Lounge",
+      "Concierge",
+      "Covered Parking",
+      "Resort Amenities",
+      "Move-in Ready",
+      "Security System",
+      "Custom Cabinetry"
+    ],
+    "floorPlans": [
+      {
+        "floor": "Main Layout",
+        "image": "/Featured/4/ground.jpg"
+      }
+    ]
+  }
+]
