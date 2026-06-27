@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "question": "Which areas do you specialize in?",
+    "answer": "Christopher primarily serves Pinellas County, Clearwater, Belleair, Largo, St. Petersburg, Palm Harbor, and surrounding Tampa Bay communities, providing deep local market knowledge for every transaction."
+  },
+  {
+    "id": 2,
+    "question": "I'm buying my first home. Can you help?",
+    "answer": "Absolutely. From mortgage pre-approval and home tours to negotiations and closing, you'll be guided through every step with clear communication and expert advice."
+  },
+  {
+    "id": 3,
+    "question": "How do you determine the value of my home?",
+    "answer": "Every valuation combines recent comparable sales, neighborhood trends, market demand, property condition, and pricing strategy to position your home competitively."
+  },
+  {
+    "id": 4,
+    "question": "What makes your selling strategy different?",
+    "answer": "Every listing receives a tailored marketing plan including professional photography, cinematic video, online advertising, strategic pricing, and skilled negotiation to maximize exposure and sale value."
+  },
+  {
+    "id": 5,
+    "question": "Can you help me find investment properties?",
+    "answer": "Yes. Whether you're purchasing your first rental or expanding your portfolio, Christopher provides market insights, ROI guidance, and opportunities based on long-term investment potential."
+  },
+  {
+    "id": 6,
+    "question": "How long does it usually take to sell a home?",
+    "answer": "Every property is different, but pricing, presentation, location, and market conditions all influence the timeline. A strategic launch helps attract qualified buyers quickly."
+  },
+  {
+    "id": 7,
+    "question": "What's the first step if I'm ready to buy or sell?",
+    "answer": "Start with a consultation. We'll discuss your goals, review your options, and create a personalized strategy that fits your timeline and budget—without any pressure."
+  }
+]

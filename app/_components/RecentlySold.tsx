@@ -24,7 +24,7 @@ const RecentlySold = () => {
             <div className="absolute inset-0 z-20 flex items-center">
               <div className="max-w-7xl mx-auto w-full px-4 md:px-12 lg:px-24">
                 <div className="max-w-sm md:max-w-md lg:max-w-xl">
-                  <h2 className="text-5xl md:text-7xl lg:text-8xl text-white font-medium leading-[1.05] mb-8 drop-shadow-2xl">
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl text-white font-medium leading-[1.05] mb-8 drop-shadow-2xl">
                     {project.title.split(' ').map((word, i) => (
                       <React.Fragment key={i}>
                         {word}

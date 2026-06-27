@@ -7,7 +7,7 @@ import Image from 'next/image';
 import data from '../../data/WhyChooseUS.json';
 
 export default function WhyChoose() {
-  const [openIndex, setOpenIndex] = useState<number | null>(1);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <section className="bg-[#050505] text-white py-24 px-4 md:px-12 lg:px-24 overflow-visible font-instrument-sans">
